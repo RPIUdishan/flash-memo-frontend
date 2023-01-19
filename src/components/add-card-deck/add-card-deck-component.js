@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = () => {
+const AddCard = () => {
     return (
         <>
             <div className='container w-auto  my-20 ml-20 mr-20'>
@@ -18,4 +18,4 @@ const Card = () => {
     )
 }
 
-export default Card
+export default AddCard

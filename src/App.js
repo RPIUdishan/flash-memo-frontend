@@ -1,11 +1,12 @@
-import Card from "./components/add-card-deck/add-card-deck-component";
-
+import AddCard from "./components/add-card-deck/add-card-deck-component";
+import CardDeck from "./components/card-deck/card-deck";
 
 function App() {
   return (
     <div className="App">
-      <div className="divide-y-4">
-        <Card />
+      <div className="mx-5">
+        <AddCard />
+        <CardDeck />
       </div>
     </div>
   );
