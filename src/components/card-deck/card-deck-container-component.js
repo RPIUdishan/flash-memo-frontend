@@ -5,7 +5,7 @@ const CardDeckContainer = () => {
     return (
         <>
             <div className=''>
-                <div class="grid grid-cols-5 gap-20 m-4">
+                <div className="grid grid-cols-5 gap-20 m-4">
                     <div>
                         <CardDeck />
                     </div>
