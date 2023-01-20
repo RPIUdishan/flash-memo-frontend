@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import {
+    addCardDeck
+} from '../../features/cardDeckSlice';
 import Popup from 'reactjs-popup'
 
 const AddCard = () => {
@@ -6,19 +10,31 @@ const AddCard = () => {
     const [deckName, setDeckName] = useState("");
     const [subject, setSubject] = useState("");
     const [color, setColor] = useState("");
+
     const [cardDeckObj, setCardDeckObj] = useState({});
 
+    const dispatch = useDispatch();
+
     const cardObj = {
-        deckName: { deckName },
-        subject: { subject },
-        color: { color }
+        deckName: deckName,
+        subject: subject,
+        color: color 
     }
 
-    const addCardDeck = () => {
+
+    const clearForm = () =>{
+        setDeckName("");
+        setSubject("");
+        setColor("");
+    }
+    
+    const addCardDeckf = () => {
         setCardDeckObj(cardObj);
-        console.log(cardDeckObj);
+        clearForm();
+        // console.log(cardDeckObj);
     }
 
+    console.log('obj', cardObj)
     return (
         <>
             <Popup
@@ -37,8 +53,8 @@ const AddCard = () => {
                 </button>}
                 position="right bottom"
                 closeOnDocumentClick={false}
-                
-                >
+
+            >
                 <div>
                     <div className="w-[300] h-auto bg-white border-black border-2 border-dashed px-10 py-2 -mt-96 ring-2 ring-blue-500 ring-offset-2 rounded-xl">
                         <div className='divide-y-2'>
@@ -59,7 +75,7 @@ const AddCard = () => {
                                             id="grid-last-name"
                                             type="text"
                                             placeholder="My Deck"
-                                            onChange={(e) => setDeckName(e.target.value)}
+                                            onChange={(e) => setDeckName(e.currentTarget.value)}
                                         />
                                     </div>
                                 </div>
@@ -76,7 +92,7 @@ const AddCard = () => {
                                             id="grid-last-name"
                                             type="text"
                                             placeholder="Science"
-                                            onChange={(e) => setSubject(e.target.value)}
+                                            onChange={(e) => setSubject(e.currentTarget.value)}
                                         />
                                     </div>
                                 </div>
@@ -90,7 +106,7 @@ const AddCard = () => {
                                         <input
                                             type={'color'}
                                             className="w-20 h-10 cursor-pointer"
-                                            onChange={(e) => setColor(e.target.value)}
+                                            onChange={(e) => setColor(e.currentTarget.value)}
                                         />
                                     </div>
                                 </div>
@@ -98,7 +114,7 @@ const AddCard = () => {
                                     <button
                                         type='button'
                                         className='w-36 h-12 bg-blue-900 rounded-lg flex justify-center items-center cursor-pointer'
-                                        onClick={addCardDeck}
+                                        onClick={() => addCardDeckf && dispatch(addCardDeck(cardDeckObj))}
                                     >
                                         <p className='text-white'>Add Card Deck</p>
                                     </button>

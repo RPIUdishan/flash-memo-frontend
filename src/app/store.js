@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
+import cardDeckReducer from '../features/cardDeckSlice';
 
-export const store = configureStore({
+const store = configureStore({
     reducer: {
-        
+        card_decks: cardDeckReducer
     },
 });
+
+export default store;
