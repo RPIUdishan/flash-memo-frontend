@@ -98,9 +98,9 @@ const AddCard = () => {
                                 </div>
                                 <div className='flex flex-row justify-evenly'>
                                     <div className='flex justify-center items-center'>
-                                        <lable className="block tracking-wide text-gray-700 text-xs font-bold">
+                                        <label className="block tracking-wide text-gray-700 text-xs font-bold">
                                             Select a Preferred Color
-                                        </lable>
+                                        </label>
                                     </div>
                                     <div>
                                         <input
