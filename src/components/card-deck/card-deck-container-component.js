@@ -1,9 +1,10 @@
 import React from 'react'
+import {  useGetAllCardDecksQuery  } from '../../features/cardDeckApiSlice'
 import CardDeck from './card-deck'
 
 const CardDeckContainer = () => {
 
-    const data = [
+    const dataa = [
         {
             cardName: 'Test 01',
             cardSubject: 'Mathematics',
@@ -31,14 +32,17 @@ const CardDeckContainer = () => {
         }
     ]
 
+ const { data, error, isError, isLoading } = useGetAllCardDecksQuery();
+
     return (
         <>
+        {console.log("on the app", isError)}
             <div className=''>
                 <div className="grid grid-cols-5 gap-20 m-4">
-                    {
-                        data.map(cardDeck => (
-                            <div>
-                                <CardDeck cardName={cardDeck.cardName} cardSubject={cardDeck.cardSubject} cardColor={cardDeck.cardColor} />
+                    { 
+                        data &&  data.map((cardDeck) => (
+                            <div key={cardDeck._id}>
+                                <CardDeck cardName={cardDeck.title} cardSubject={cardDeck.subject} cardColor={cardDeck.color} />
                             </div>
                         ))
                     }
