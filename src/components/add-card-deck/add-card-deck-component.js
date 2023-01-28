@@ -35,6 +35,10 @@ const AddCard = () => {
         // console.log(cardDeckObj);
     }
 
+    const setClose = () => {
+        setOpen(false)
+    }
+
     console.log('obj', cardObj)
     return (
         <>
@@ -157,7 +161,9 @@ const AddCard = () => {
                                     <div>
                                         <p className='font-body text-lg text-gray-900 font-bold'>Add Your Card Deck</p>
                                     </div>
-                                    <div className='mr-5 p-0.5 mb-1 cursor-pointer duration-700 ease-in-out hover:bg-blue-100'>
+                                    <div className='mr-5 p-0.5 mb-1 cursor-pointer duration-700 ease-in-out hover:bg-blue-100'
+                                        onClick={setClose}
+                                    >
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" className='text-gray-900'>
                                             <path d="M6.4 19 5 17.6l5.6-5.6L5 6.4 6.4 5l5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6Z" />
                                         </svg>
@@ -199,7 +205,9 @@ const AddCard = () => {
                                         <div className='w-48 h-10 bg-blue-900 rounded-md flex items-center justify-center focus:ring-1 focus:ring-blue-900 cursor-pointer'>
                                             <p className='font-body text-white'>Add Card</p>
                                         </div>
-                                        <div className='w-48 h-10 bg-white border-blue-900 cursor-pointer border-solid border-2 rounded-md flex items-center justify-center hover:bg-red-500 hover:transition hover:duration-300 hover:ease-in hover:from-neutral-50 hover:border-white'>
+                                        <div className='w-48 h-10 bg-white border-blue-900 cursor-pointer border-solid border-2 rounded-md flex items-center justify-center hover:bg-red-500 hover:transition hover:duration-300 hover:ease-in hover:from-neutral-50 hover:border-white'
+                                            onClick={setClose}
+                                        >
                                             <p className='font-body text-blue-900 hover:text-white'>Cancel</p>
                                         </div>
                                     </div>
