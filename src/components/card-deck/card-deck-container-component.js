@@ -36,7 +36,7 @@ const CardDeckContainer = () => {
 
     return (
         <>
-            {console.log("on the app", isError)}
+            {console.log("on the app", data)}
             <div className='container'>
                 <div className='m-4'>
                     <div>
@@ -55,7 +55,7 @@ const CardDeckContainer = () => {
                     {
                         data && data.map((cardDeck) => (
                             <div key={cardDeck._id}>
-                                <CardDeck cardName={cardDeck.title} cardSubject={cardDeck.subject} cardColor={cardDeck.color} />
+                                <CardDeck cardName={cardDeck.title} cardSubject={cardDeck.subject} cardColor={cardDeck.color} noOfCards={cardDeck.noOfCards}/>
                             </div>
                         ))
                     }
