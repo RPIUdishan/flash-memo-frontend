@@ -6,14 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './app/store'
 import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
-import { getAllCardDecksApi } from './features/cardDeckApiSlice';
+import { cardDecksApi } from './features/cardDeckApiSlice';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ApiProvider api={getAllCardDecksApi}>
+      <ApiProvider api={cardDecksApi}>
         <App />
       </ApiProvider>
     </Provider>

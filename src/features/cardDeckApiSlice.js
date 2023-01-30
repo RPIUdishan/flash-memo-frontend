@@ -1,13 +1,23 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const getAllCardDecksApi = createApi({
-    reducerPath: 'getAllCardDecksApi',
+export const cardDecksApi = createApi({
+    reducerPath: 'cardDecksApi',
     baseQuery: fetchBaseQuery({ baseUrl:'http://localhost:5000' }),
+
     endpoints: (builder) => ({
         getAllCardDecks: builder.query({
             query: () => '/api/flashCardsDeck'
         }),
-    }),
-})
 
-export const { useGetAllCardDecksQuery } = getAllCardDecksApi
+        createCardDeck: builder.mutation({
+            query: (initialTransaction) => ({
+               url:  'api/flashCardDeck/create',
+               method: 'POST',
+               body: initialTransaction
+            })
+        })
+    }),
+});
+
+
+export const { useGetAllCardDecksQuery } = cardDecksApi;
