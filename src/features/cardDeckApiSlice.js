@@ -8,12 +8,14 @@ export const cardDecksApi = createApi({
         getAllCardDecks: builder.query({
             query: () => '/api/flashCardsDeck'
         }),
-
+        
         createCardDeck: builder.mutation({
-            query: (initialTransaction) => ({
-               url:  'api/flashCardDeck/create',
-               method: 'POST',
-               body: initialTransaction
+            query: (initialCardDeckData) => ({
+                url:  '/api/flashCardsDeck/create',
+                method: 'POST',
+                body: {
+                    ...initialCardDeckData
+                },           
             })
         })
     }),
@@ -21,3 +23,4 @@ export const cardDecksApi = createApi({
 
 
 export const { useGetAllCardDecksQuery } = cardDecksApi;
+export const { useCreateCardDeckMutation } = cardDecksApi;

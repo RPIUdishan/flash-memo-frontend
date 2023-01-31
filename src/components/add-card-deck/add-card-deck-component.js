@@ -1,9 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import {
-    addCardDeck
-} from '../../features/cardDeckSlice';
-import Popup from 'reactjs-popup'
+import { useCreateCardDeckMutation } from '../../features/cardDeckApiSlice';
 
 const AddCard = () => {
 
@@ -11,35 +7,47 @@ const AddCard = () => {
     const [subject, setSubject] = useState("");
     const [color, setColor] = useState("");
 
+
+    const [createCardDeck] = useCreateCardDeckMutation();
+
     const [cardDeckObj, setCardDeckObj] = useState({});
     const [open, setOpen] = useState(false);
 
-    const dispatch = useDispatch();
+    // const setData = () => {
+    //     const data = {
+    //         title: deckName,
+    //         subject": subject,
+    //         "color": color,
+    //         "noOfCards": 25
+    //     }
+    //     setCardDeckObj(data)
+    // }
 
-    const cardObj = {
-        deckName: deckName,
-        subject: subject,
-        color: color
-    }
+    const test = async () => {
 
-
-    const clearForm = () => {
-        setDeckName("");
-        setSubject("");
-        setColor("");
-    }
-
-    const addCardDeckf = () => {
-        setCardDeckObj(cardObj);
-        clearForm();
-        // console.log(cardDeckObj);
+        let datax = {
+            title: deckName,
+            subject: subject,
+            color: color,
+            noOfCards: 25
+        }
+        const data =datax
+        try {
+            if (!data) return {}
+            console.log("mmm", data)
+            await createCardDeck(data).unwrap()
+            console.log("mmmadfsdf")
+        } catch (error) {
+            console.log(error)
+        }
+        console.log("rrr", data)
     }
 
     const setClose = () => {
         setOpen(false)
     }
 
-    console.log('obj', cardObj)
+
     return (
         <>
 
@@ -79,7 +87,7 @@ const AddCard = () => {
                             <div>
                                 <div className='mx-5'>
                                     <div>
-                                        <label for="first_name" className="block mb-0.5 ml-1 text-sm font-body text-gray-900">Card Deck Name</label>
+                                        <label htmlFor="first_name" className="block mb-0.5 ml-1 text-sm font-body text-gray-900">Card Deck Name</label>
                                         <input
                                             type="text"
                                             id="deckName"
@@ -92,7 +100,7 @@ const AddCard = () => {
                                 </div>
                                 <div className='mx-5 my-3'>
                                     <div>
-                                        <label for="first_name" className="block mb-0.5 ml-1 text-sm font-body text-gray-900">Subject</label>
+                                        <label htmlFor="first_name" className="block mb-0.5 ml-1 text-sm font-body text-gray-900">Subject</label>
                                         <input
                                             type="text"
                                             id="deckSubject"
@@ -113,7 +121,7 @@ const AddCard = () => {
                                     <div>
                                         <input
                                             type={'color'}
-                                            id={'deckColor'}
+                                            id='deckColor'
                                             className="w-20 h-10 cursor-pointer"
                                             onChange={(e) => setColor(e.currentTarget.value)}
                                         />
@@ -121,7 +129,10 @@ const AddCard = () => {
                                 </div>
                                 <div className='mt-5'>
                                     <div className='flex justify-around'>
-                                        <div className='w-48 h-10 bg-blue-900 rounded-md flex items-center justify-center focus:ring-1 focus:ring-blue-900 cursor-pointer'>
+                                        <div
+                                            className='w-48 h-10 bg-blue-900 rounded-md flex items-center justify-center focus:ring-1 focus:ring-blue-900 cursor-pointer'
+                                            onClick={test}
+                                        >
                                             <p className='font-body text-white'>Add Card</p>
                                         </div>
                                         <div className='w-48 h-10 bg-white border-blue-900 cursor-pointer border-solid border-2 rounded-md flex items-center justify-center hover:bg-red-500 hover:transition hover:duration-300 hover:ease-in hover:from-neutral-50 hover:border-white'
