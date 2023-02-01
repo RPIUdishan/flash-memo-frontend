@@ -1,14 +1,16 @@
-import AddCard from "./components/add-card-deck/add-card-deck-component";
-import CardDeckContainer from "./components/card-deck/card-deck-container-component";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/home/home-page";
+
 
 function App() {
   return (
-    <div className="App">
-      <div className="mx-5">
-        <AddCard />
-        <CardDeckContainer />
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={  <HomePage />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
