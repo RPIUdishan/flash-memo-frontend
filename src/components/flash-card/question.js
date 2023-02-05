@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Question = (question) => {
+const Question = ({question}) => {
   return (
     <>
-    <div className='w-fit'>
-        <p className='text-2xl text-slate-900'>{question}</p>
+    <div className='w-fit p-2'>
+        <p className='text-md text-slate-900'>{question}</p>
     </div>
     </>
   )
