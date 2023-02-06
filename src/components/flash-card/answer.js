@@ -1,16 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Answer = ({ answer, isCorrect, clarification }) => {
+const Answer = ({ number, answer, isCorrect }) => {
+
+    const [selectAnswer, setSelectAnswer] = useState(false);
+
+    const correctionChecking = () => {
+        console.log("clicked")
+        setSelectAnswer(true)
+        if (isCorrect === true) {
+            console.log("Is Correct true")
+        }
+        else {
+            console.log("Is correct false")
+        }
+        console.log("set select anser true")
+    }
+
     return (
         <>
-            <div className='my-4'>
-                <div className="flex">
+            <div className='m-4'>
+                <div className="flex items-center">
                     <div className="flex items-center h-5">
-                        <input id="helper-radio" aria-describedby="helper-radio-text" type="radio" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 " />
+                        <p>{number}</p>
                     </div>
-                    <div className="ml-2 text-sm">
-                        <label for="helper-radio" className="font-medium text-gray-900 ">{answer}</label>
+                    <div
+                        className="ml-2 text-sm border-slate-400 border border-solid rounded-full p-2 w-full h-fit flex items-center cursor-pointer hover:border-slate-800 hover:duration-700"
+                        style={{
+                            borderColor: selectAnswer && isCorrect ? "#09ff00" : null,
+                            backgroundColor: selectAnswer && isCorrect ? "#c8f5c6" : null,
+                        }}
+                        onClick={correctionChecking}
+                    >
+                        <div>
+                            <p>{answer}</p>
+                        </div>
                     </div>
+                </div>
+                <div>
+                    {
+                        selectAnswer && !isCorrect ?
+                            <p className='text-[10px] ml-10 text-red-400'>Incorrect Answer</p>
+                            : null
+                    }
                 </div>
             </div>
         </>
