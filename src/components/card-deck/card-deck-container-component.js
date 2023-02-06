@@ -6,6 +6,10 @@ import HashLoader from "react-spinners/HashLoader";
 
 const CardDeckContainer = () => {
 
+    const fetchCardDeckData = (cardDeckId) => {
+        console.log("Card Deck ID: ", cardDeckId)
+    }
+
     const { data, error, isError, isLoading } = useGetAllCardDecksQuery();
     return (
         <>
@@ -49,7 +53,13 @@ const CardDeckContainer = () => {
                     {
                         data && data.map((cardDeck) => (
                             <div key={cardDeck._id}>
-                                <CardDeck cardName={cardDeck.title} cardSubject={cardDeck.subject} cardColor={cardDeck.color} noOfCards={cardDeck.noOfCards} />
+                                <CardDeck
+                                    cardName={cardDeck.title}
+                                    cardSubject={cardDeck.subject}
+                                    cardColor={cardDeck.color}
+                                    noOfCards={cardDeck.noOfCards}
+                                    onClick={fetchCardDeckData(key)}
+                                />
                             </div>
                         ))
                     }
