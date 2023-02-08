@@ -3,10 +3,13 @@ import { useGetAllCardDecksQuery } from '../../features/cardDeckApiSlice'
 import CardDeck from './card-deck'
 
 import HashLoader from "react-spinners/HashLoader";
+import { useNavigate } from 'react-router-dom';
 
 const CardDeckContainer = () => {
 
+    const navigate = useNavigate();
     const fetchCardDeckData = (cardDeckId) => {
+        navigate(`/flash-cards/${cardDeckId}`)
         console.log("Card Deck ID: ", cardDeckId)
     }
 
@@ -52,13 +55,13 @@ const CardDeckContainer = () => {
                 <div className="grid grid-cols-5 gap-20 m-4">
                     {
                         data && data.map((cardDeck) => (
-                            <div key={cardDeck._id}>
+                            <div key={cardDeck._id} 
+                            onClick={() => fetchCardDeckData(cardDeck._id)}>
                                 <CardDeck
                                     cardName={cardDeck.title}
                                     cardSubject={cardDeck.subject}
                                     cardColor={cardDeck.color}
                                     noOfCards={cardDeck.noOfCards}
-                                    onClick={fetchCardDeckData(key)}
                                 />
                             </div>
                         ))
