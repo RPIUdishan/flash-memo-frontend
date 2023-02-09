@@ -21,7 +21,6 @@ const AddCard = () => {
             title: deckName,
             subject: subject,
             color: color,
-            noOfCards: 25
         }
 
         setLoading(true)
