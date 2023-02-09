@@ -1,17 +1,26 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import CardContainer from '../../components/flash-card/card-container'
 import MockCard from '../../components/flash-card/mock-card'
 
 const FlashCardsPage = () => {
 
   const { id } = useParams()
+
+  const navigate = useNavigate()
+
+  const returnToMain = () => {
+    navigate('/')
+  }
+
   return (
     // <div>Flash Card Deck ID: { id }</div>
     <>
       <div className='w-full h-fit'>
         <div className='flex justify-end mr-10 my-10'>
-          <div className='mx-2 flex justify-evenly items-center border-red-500 border-solid border w-48 h-10 hover:bg-red-500 hover:text-white rounded-lg hover:fill-white hover:duration-500 cursor-pointer'>
+          <div className='mx-2 flex justify-evenly items-center border-red-500 border-solid border w-48 h-10 hover:bg-red-500 hover:text-white rounded-lg hover:fill-white hover:duration-500 cursor-pointer'
+            onClick={returnToMain}
+          >
             <div className='mx-1'>
               <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M8.925 17.225 3.725 12l5.2-5.225.65.675L5.5 11.525h13.875v-3.95h.925v4.875H5.5l4.075 4.1Z" /></svg>
             </div>
