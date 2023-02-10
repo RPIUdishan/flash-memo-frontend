@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useCreateCardDeckMutation } from '../../features/cardDeckApiSlice';
 import HashLoader from "react-spinners/HashLoader";
 
-const AddCard = () => {
+const AddCardDeck = () => {
 
     const [deckName, setDeckName] = useState("");
     const [subject, setSubject] = useState("");
@@ -154,4 +154,4 @@ const AddCard = () => {
     )
 }
 
-export default AddCard
+export default AddCardDeck
