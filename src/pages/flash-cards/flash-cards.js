@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import AddCard from '../../components/flash-card/add-card'
 import CardContainer from '../../components/flash-card/card-container'
 
 const FlashCardsPage = () => {
@@ -8,8 +9,14 @@ const FlashCardsPage = () => {
 
   const navigate = useNavigate()
 
+  const [openAddCard, setOpenAddCard] = useState(false)
+
   const returnToMain = () => {
     navigate('/')
+  }
+
+  const clickToOpenAddCard = () => {
+    setOpenAddCard(true)
   }
 
   return (
@@ -26,7 +33,9 @@ const FlashCardsPage = () => {
               <p>Return </p>
             </div>
           </div>
-          <div className='mx-2 flex justify-evenly items-center border-green-500 border-solid border w-48 h-10 hover:bg-green-500 hover:text-white rounded-lg hover:fill-white hover:duration-700 cursor-pointer'>
+          <div className='mx-2 flex justify-evenly items-center border-green-500 border-solid border w-48 h-10 hover:bg-green-500 hover:text-white rounded-lg hover:fill-white hover:duration-700 cursor-pointer'
+            onClick={clickToOpenAddCard}
+          >
             <div className='mx-1'>
               <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M4.7 18.85q-.65 0-1.1-.437-.45-.438-.45-1.088V6.65q0-.625.45-1.075.45-.45 1.1-.45h14.6q.65 0 1.1.45.45.45.45 1.075v4.475H4.075v6.2q0 .225.188.425.187.2.437.2h8.425v.9Zm-.625-9.975h15.85V6.65q0-.225-.187-.412-.188-.188-.438-.188H4.7q-.25 0-.437.188-.188.187-.188.412ZM19.55 21.45v-3h-3v-.925h3v-3h.925v3h3v.925h-3v3Zm-15.475-3.5V6.05v11.9Z" /></svg>
             </div>
@@ -37,6 +46,12 @@ const FlashCardsPage = () => {
         </div>
       </div>
 
+      {
+        openAddCard ?
+          <AddCard/>
+          :
+          null
+      }
       <div className='mx-10'>
         <div>
           <div>
