@@ -3,7 +3,7 @@ import React from 'react'
 const AddCard = () => {
     return (
         <>
-            <div className='w-screen h-fit'>
+            <div className='fixed inset-0 bg-opacity-30 backdrop-blur-md flex justify-center items-center'>
                 <div className='w-1/2 h-auto divide-y-2 rounded-lg bg-white ring-2 pb-4'>
                     <div className='flex justify-between items-center'>
                         <div>
