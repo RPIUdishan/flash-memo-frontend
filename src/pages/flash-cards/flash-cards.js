@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import CardContainer from '../../components/flash-card/card-container'
-import MockCard from '../../components/flash-card/mock-card'
 
 const FlashCardsPage = () => {
 
@@ -14,7 +13,6 @@ const FlashCardsPage = () => {
   }
 
   return (
-    // <div>Flash Card Deck ID: { id }</div>
     <>
       <div className='w-full h-fit'>
         <div className='flex justify-end mr-10 my-10'>
